@@ -1,9 +1,9 @@
-﻿using BFF.web.Model;
+﻿using BFF.web.Dtos;
 
 namespace BFF.web.Interfaces
 {
     public interface IEpisodiosService
     {
-        public Task<List<Episodio>> EpisodiosAsync();
+        public Task<List<EpisodioDto>> EpisodiosAsync();
     }
 }

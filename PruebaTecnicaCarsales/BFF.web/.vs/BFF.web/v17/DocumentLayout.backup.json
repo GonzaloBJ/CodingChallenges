@@ -1,30 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario\\sandbox\\BFF.web\\",
+  "WorkspaceRootPath": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\bff.web\\services\\episodiosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:services\\episodiosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\bff.web\\controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\bff.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\bff.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\bff.web\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\bff.web\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\BFF.web\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\usuario\\sandbox\\BFF.web\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T20:07:06.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EpisodiosService.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\BFF.web\\Services\\EpisodiosService.cs",
-              "RelativeDocumentMoniker": "Services\\EpisodiosService.cs",
-              "ToolTip": "C:\\Users\\usuario\\sandbox\\BFF.web\\Services\\EpisodiosService.cs",
-              "RelativeToolTip": "Services\\EpisodiosService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T20:01:33.97Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\BFF.web\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\usuario\\sandbox\\BFF.web\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-10T20:00:05.052Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "EpisodiosController.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\BFF.web\\Controllers\\EpisodiosController.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Controllers\\EpisodiosController.cs",
               "RelativeDocumentMoniker": "Controllers\\EpisodiosController.cs",
-              "ToolTip": "C:\\Users\\usuario\\sandbox\\BFF.web\\Controllers\\EpisodiosController.cs",
+              "ToolTip": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Controllers\\EpisodiosController.cs",
               "RelativeToolTip": "Controllers\\EpisodiosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T19:44:45.461Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\BFF.web\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\usuario\\sandbox\\BFF.web\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T19:40:38.152Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WeatherForecast.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\BFF.web\\WeatherForecast.cs",
-              "RelativeDocumentMoniker": "WeatherForecast.cs",
-              "ToolTip": "C:\\Users\\usuario\\sandbox\\BFF.web\\WeatherForecast.cs",
-              "RelativeToolTip": "WeatherForecast.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T19:40:20.182Z",
               "EditorCaption": ""
             }
           ]

@@ -1,4 +1,5 @@
 using BFF.web.Interfaces;
+using BFF.web.Middleware;
 using BFF.web.Services;
 using Microsoft.Extensions.Options;
 
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

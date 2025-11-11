@@ -2,7 +2,7 @@
 
 namespace BFF.web.Model
 {
-    public class Episodio
+    public class Episode
     {
         public int id { get; set; }
         public string name { get; set; }

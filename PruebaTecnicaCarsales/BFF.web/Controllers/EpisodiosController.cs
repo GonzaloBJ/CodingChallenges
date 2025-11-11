@@ -1,7 +1,5 @@
-﻿using BFF.web.Interfaces;
-using BFF.web.Model;
-using BFF.web.Services;
-using Microsoft.AspNetCore.Http;
+﻿using BFF.web.Dtos;
+using BFF.web.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BFF.web.Controllers
@@ -19,11 +17,11 @@ namespace BFF.web.Controllers
 
 
         [HttpGet(Name = "episodios")]
-        public List<Episodio> Get()
+        public async Task<List<EpisodioDto>> GetAsync()
         {
-            var episodios = _episodiosService.EpisodiosAsync();
+            List<EpisodioDto> episodios = await _episodiosService.EpisodiosAsync();
 
-            return episodios.Result;
+            return episodios;
         }
     }
 }

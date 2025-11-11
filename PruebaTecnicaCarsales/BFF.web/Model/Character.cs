@@ -1,6 +1,6 @@
 ﻿namespace BFF.web.Model
 {
-    public class Personaje
+    public class Character
     {
 
     }

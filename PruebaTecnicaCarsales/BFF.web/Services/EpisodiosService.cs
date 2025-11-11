@@ -1,4 +1,6 @@
-﻿using BFF.web.Interfaces;
+﻿using BFF.web.Dtos;
+using BFF.web.Helpers;
+using BFF.web.Interfaces;
 using BFF.web.Model;
 using System.Text.Json;
 
@@ -13,28 +15,32 @@ namespace BFF.web.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<Episodio>> EpisodiosAsync()
+        public async Task<List<EpisodioDto>> EpisodiosAsync()
         {
             // Realiza la solicitud GET de forma asíncrona
-            var response = await _httpClient.GetAsync("episode");
+            HttpResponseMessage? response = await _httpClient.GetAsync("episode");
             response.EnsureSuccessStatusCode();
 
-            var json = await response.Content.ReadAsStringAsync();
+            string? json = await response.Content.ReadAsStringAsync();
 
             // Deserializar el JSON a una paginacion
-            var episodiosPagination = JsonSerializer.Deserialize<Pagination>(json, new JsonSerializerOptions
+            Pagination? episodiosPagination = JsonSerializer.Deserialize<Pagination>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             });
 
             // Deserializar el resultado a una lista de episodios
-            var episodios = episodiosPagination?.results?.Select(e => JsonSerializer.Deserialize<Episodio>(e.ToString() ?? "", new JsonSerializerOptions
+            IEnumerable<Episode?>? episodios = episodiosPagination?.results?.Select(e => 
+            JsonSerializer.Deserialize<Episode>(e.ToString() ?? "", new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
-            })).ToList();
+            }));
 
+            if (episodios == null && episodios?.Count() > 0) return new List<EpisodioDto>();
 
-            return episodios?? new List<Episodio>();
+            // Transforma el resultado extraido del servicio a un DTO para el frontend
+            return [.. Transformations.TransformEpisodiosToDto(episodios!)];
         }
+
     }
 }

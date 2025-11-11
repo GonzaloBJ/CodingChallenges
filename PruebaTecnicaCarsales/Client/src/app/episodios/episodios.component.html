@@ -1,0 +1,80 @@
+<p>episodios works!</p>
+<div class="container">
+  <div class="table-section">
+      <h2>Lista de Ítems</h2>
+
+      <table class="data-table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Emitido En</th>
+                  <th>Temp/Episodio</th>
+                  <th>Acción</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr
+                  *ngFor="let item of paginatedData"
+                  [class.selected]="item === selectedItem"
+              >
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.nombre }}</td>
+                  <td>{{ item.emitidoEn }}</td>
+                  <td>{{ item.temporadaConNumeroEpisodio }}</td>
+                  <td>
+                      <button class="select-btn" (click)="selectItem(item)">
+                          {{ item === selectedItem ? 'Deseleccionar' : 'Ver Detalle' }}
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <div class="paginator">
+          <button
+              (click)="goToPage(currentPage - 1)"
+              [disabled]="currentPage === 1"
+          >
+              &laquo; Anterior
+          </button>
+
+          <button
+              *ngFor="let page of pageNumbers"
+              (click)="goToPage(page)"
+              [class.active]="page === currentPage"
+          >
+              {{ page }}
+          </button>
+
+          <button
+              (click)="goToPage(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+          >
+              Siguiente &raquo;
+          </button>
+          <span class="info">Página {{ currentPage }} de {{ totalPages }}</span>
+      </div>
+  </div>
+
+  <div class="card-section">
+      <h2>Detalle</h2>
+
+      <div class="card" *ngIf="selectedItem; else noSelection">
+          <div class="card-header">
+              <h3>{{ selectedItem.nombre }}</h3>
+              <span class="subtitle">ID: {{ selectedItem.id }}</span>
+          </div>
+          <div class="card-body">
+              <p><strong>📺 Emitido en:</strong> {{ selectedItem.emitidoEn }}</p>
+              <p><strong># Temporada/Episodio:</strong> {{ selectedItem.temporadaConNumeroEpisodio }}</p>
+          </div>
+      </div>
+
+      <ng-template #noSelection>
+          <div class="card placeholder">
+              Selecciona una fila de la tabla para ver sus detalles.
+          </div>
+      </ng-template>
+  </div>
+</div>
