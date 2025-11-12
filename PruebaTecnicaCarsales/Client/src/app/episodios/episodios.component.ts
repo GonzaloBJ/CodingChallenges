@@ -1,6 +1,8 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Necesario para ngIf, ngFor
+import { EpisodiosService } from './episodios.service';
+import { IEpisodiosFilter } from '../model/EpisodiosFilter';
 
 // Interfaz para la estructura de datos
 interface ItemTabla {
@@ -18,8 +20,7 @@ interface ItemTabla {
   styleUrl: './episodios.component.css'
 })
 export class EpisodiosComponent implements OnInit {
-
-  // --- Paginación ---
+  public episodiosService = inject(EpisodiosService);
 
   // Fuente de datos completa
   private initialData: ItemTabla[] = [
@@ -56,6 +57,26 @@ export class EpisodiosComponent implements OnInit {
     this.totalItems = this.initialData.length;
     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
     this.updatePagination();
+
+    if (!this.episodiosService.isLoading())
+      this.cargarEpisodios({});
+
+    // const page = 2;
+    // const relatedId = 3;
+
+    // this.episodiosService.getEpisodios(page, relatedId).subscribe({
+    //   next: (data) => {
+    //     this.episodios = data;
+    //     console.log('Datos de episodios cargados:', data);
+    //   },
+    //   error: (err) => {
+    //     console.error('Error al cargar los episodios:', err);
+    //   },
+    // });
+  }
+
+  cargarEpisodios(filter: IEpisodiosFilter): void {
+    this.episodiosService.getEpisodios(filter);
   }
 
   /**

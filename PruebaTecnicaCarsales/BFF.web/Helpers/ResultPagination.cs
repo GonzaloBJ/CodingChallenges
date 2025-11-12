@@ -1,8 +1,8 @@
 ﻿namespace BFF.web.Helpers
 {
-    public class Pagination<T> where T : class
+    public class ResultPagination<T> where T : class
     {
-        public Pagination(int pageIndex, int pageSize, int count, IReadOnlyList<T> data)
+        public ResultPagination(int pageIndex, int pageSize, int count, IReadOnlyList<T> data)
         {
             PageIndex = pageIndex;
             PageSize = pageSize;

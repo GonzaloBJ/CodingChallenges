@@ -1,4 +1,6 @@
 ﻿using BFF.web.Dtos;
+using BFF.web.Filters;
+using BFF.web.Helpers;
 using BFF.web.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,9 +19,9 @@ namespace BFF.web.Controllers
 
 
         [HttpGet(Name = "episodios")]
-        public async Task<List<EpisodioDto>> GetAsync()
+        public async Task<ResultPagination<EpisodioDto>> GetAsync([FromQuery] EpisodiosFilter filter)
         {
-            List<EpisodioDto> episodios = await _episodiosService.EpisodiosAsync();
+            ResultPagination<EpisodioDto> episodios = await _episodiosService.EpisodiosAsync(filter);
 
             return episodios;
         }

@@ -11,32 +11,41 @@
           "Episodios"
         ],
         "operationId": "episodios",
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/EpisodioDto"
-                  }
+                  "$ref": "#/components/schemas/EpisodioDtoResultPagination"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/EpisodioDto"
-                  }
+                  "$ref": "#/components/schemas/EpisodioDtoResultPagination"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/EpisodioDto"
-                  }
+                  "$ref": "#/components/schemas/EpisodioDtoResultPagination"
                 }
               }
             }
@@ -103,6 +112,31 @@
           },
           "temporadaConNumeroEpisodio": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EpisodioDtoResultPagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EpisodioDto"
+            },
             "nullable": true
           }
         },

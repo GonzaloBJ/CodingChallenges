@@ -1,4 +1,5 @@
 ﻿using BFF.web.Dtos;
+using BFF.web.Filters;
 using BFF.web.Helpers;
 using BFF.web.Interfaces;
 using BFF.web.Model;
@@ -15,31 +16,50 @@ namespace BFF.web.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<EpisodioDto>> EpisodiosAsync()
+        public async Task<ResultPagination<EpisodioDto>> EpisodiosAsync(EpisodiosFilter filter)
         {
+            string queryString = "episode";
+
+            // Agrega los parámetros de consulta según el filtro proporcionado
+            if (filter.PageIndex > 1)
+                queryString += $"?page={filter.PageIndex}";
+
+            if (filter.PageIndex == 1 && filter.Id.HasValue)
+                queryString += $"/{filter.Id.Value}";
+
             // Realiza la solicitud GET de forma asíncrona
-            HttpResponseMessage? response = await _httpClient.GetAsync("episode");
+            HttpResponseMessage? response = await _httpClient.GetAsync(queryString);
             response.EnsureSuccessStatusCode();
 
             string? json = await response.Content.ReadAsStringAsync();
 
             // Deserializar el JSON a una paginacion
-            Pagination? episodiosPagination = JsonSerializer.Deserialize<Pagination>(json, new JsonSerializerOptions
+            if (filter.Id.HasValue)
             {
-                PropertyNameCaseInsensitive = true
-            });
+                Episode? episodio = JsonSerializer.Deserialize<Episode>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
 
-            // Deserializar el resultado a una lista de episodios
-            IEnumerable<Episode?>? episodios = episodiosPagination?.results?.Select(e => 
-            JsonSerializer.Deserialize<Episode>(e.ToString() ?? "", new JsonSerializerOptions
+                if (episodio == null)
+                    return new ResultPagination<EpisodioDto>(0, 0, 0, new List<EpisodioDto>());
+
+                // Transforma el resultado extraido del servicio a un DTO para el frontend
+                return Transformations.TransformSingleEpisodeToResultPagination(episodio);
+            }
+            else
             {
-                PropertyNameCaseInsensitive = true
-            }));
+                Pagination? episodiosPagination = JsonSerializer.Deserialize<Pagination>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
 
-            if (episodios == null && episodios?.Count() > 0) return new List<EpisodioDto>();
+                if (episodiosPagination == null)
+                    return new ResultPagination<EpisodioDto>(0, 0, 0, new List<EpisodioDto>());
 
-            // Transforma el resultado extraido del servicio a un DTO para el frontend
-            return [.. Transformations.TransformEpisodiosToDto(episodios!)];
+                // Transforma el resultado extraido del servicio a un DTO para el frontend
+                return Transformations.TransformEpisodePaginationToResultPagination(episodiosPagination!, filter.PageIndex);
+            }
         }
 
     }

@@ -1,4 +1,15 @@
 <p>episodios works!</p>
+@if (episodiosService.isLoading()) {
+  <p>Cargando cesta...</p>
+} @else if (episodiosService.episodiosPaginated()) {
+  <h2>Mi Cesta</h2>
+  <p>ID: {{ episodiosService.episodiosPaginated()?.data }}</p>
+  <p>Total de productos: {{ episodiosService.episodiosPaginated()!.count}}</p>
+} @else {
+  <p>La cesta está vacía.</p>
+}
+<button (click)="cargarEpisodios({})">Cargar Cesta</button>
+
 <div class="container">
   <div class="table-section">
       <h2>Lista de Ítems</h2>
@@ -14,20 +25,19 @@
               </tr>
           </thead>
           <tbody>
-              <tr
-                  *ngFor="let item of paginatedData"
-                  [class.selected]="item === selectedItem"
-              >
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.nombre }}</td>
-                  <td>{{ item.emitidoEn }}</td>
-                  <td>{{ item.temporadaConNumeroEpisodio }}</td>
+            @for (episodio of episodiosService.episodiosPaginated()?.data; track episodio.id) {
+              <tr [class.selected]="episodio === selectedItem">
+                  <td>{{ episodio.id }}</td>
+                  <td>{{ episodio.nombre }}</td>
+                  <td>{{ episodio.emitidoEn }}</td>
+                  <td>{{ episodio.temporadaConNumeroEpisodio }}</td>
                   <td>
-                      <button class="select-btn" (click)="selectItem(item)">
-                          {{ item === selectedItem ? 'Deseleccionar' : 'Ver Detalle' }}
+                      <button class="select-btn" (click)="selectItem(episodio)">
+                          {{ episodio === selectedItem ? 'Deseleccionar' : 'Ver Detalle' }}
                       </button>
                   </td>
               </tr>
+            }
           </tbody>
       </table>
 
