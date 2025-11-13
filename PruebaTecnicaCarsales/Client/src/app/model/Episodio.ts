@@ -1,6 +1,6 @@
 export interface IEpisodio {
-  Id: number;
-  Nombre: string;
-  EmitidoEn: string;
-  TemporadaConNumeroEpisodio: string;
+  id: number;
+  nombre: string;
+  emitidoEn: string;
+  temporadaConNumeroEpisodio: string;
 }

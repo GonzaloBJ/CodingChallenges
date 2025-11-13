@@ -1,5 +1,5 @@
 <p>episodios works!</p>
-@if (episodiosService.isLoading()) {
+<!-- @if (episodiosService.isLoading()) {
   <p>Cargando cesta...</p>
 } @else if (episodiosService.episodiosPaginated()) {
   <h2>Mi Cesta</h2>
@@ -8,11 +8,11 @@
 } @else {
   <p>La cesta está vacía.</p>
 }
-<button (click)="cargarEpisodios({})">Cargar Cesta</button>
+<button (click)="cargarEpisodios({})">Cargar Cesta</button> -->
 
 <div class="container">
   <div class="table-section">
-      <h2>Lista de Ítems</h2>
+      <h2>Lista de Episodios</h2>
 
       <table class="data-table">
           <thead>
@@ -26,14 +26,14 @@
           </thead>
           <tbody>
             @for (episodio of episodiosService.episodiosPaginated()?.data; track episodio.id) {
-              <tr [class.selected]="episodio === selectedItem">
+              <tr [class.selected]="episodio === selectedEpisodio">
                   <td>{{ episodio.id }}</td>
                   <td>{{ episodio.nombre }}</td>
                   <td>{{ episodio.emitidoEn }}</td>
                   <td>{{ episodio.temporadaConNumeroEpisodio }}</td>
                   <td>
-                      <button class="select-btn" (click)="selectItem(episodio)">
-                          {{ episodio === selectedItem ? 'Deseleccionar' : 'Ver Detalle' }}
+                      <button class="select-btn" (click)="selectEpisodio(episodio)">
+                          {{ episodio === selectedEpisodio ? 'Deseleccionar' : 'Ver Detalle' }}
                       </button>
                   </td>
               </tr>
@@ -70,14 +70,14 @@
   <div class="card-section">
       <h2>Detalle</h2>
 
-      <div class="card" *ngIf="selectedItem; else noSelection">
+      <div class="card" *ngIf="selectedEpisodio; else noSelection">
           <div class="card-header">
-              <h3>{{ selectedItem.nombre }}</h3>
-              <span class="subtitle">ID: {{ selectedItem.id }}</span>
+              <h3>{{ selectedEpisodio.nombre }}</h3>
+              <span class="subtitle">ID: {{ selectedEpisodio.id }}</span>
           </div>
           <div class="card-body">
-              <p><strong>📺 Emitido en:</strong> {{ selectedItem.emitidoEn }}</p>
-              <p><strong># Temporada/Episodio:</strong> {{ selectedItem.temporadaConNumeroEpisodio }}</p>
+              <p><strong>📺 Emitido en:</strong> {{ selectedEpisodio.emitidoEn }}</p>
+              <p><strong># Temporada/Episodio:</strong> {{ selectedEpisodio.temporadaConNumeroEpisodio }}</p>
           </div>
       </div>
 

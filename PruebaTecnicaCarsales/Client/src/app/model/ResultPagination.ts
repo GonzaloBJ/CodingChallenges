@@ -1,6 +1,6 @@
-export interface IResultPagination {
+export interface IResultPagination<T> {
   pageIndex: number;
   pageSize: number;
   count: number;
-  data: any[];
+  data: T[];
 }

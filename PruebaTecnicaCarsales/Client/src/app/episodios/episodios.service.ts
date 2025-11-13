@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal } from "@angular/core";
 import { finalize } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { IEpisodio } from '../model/Episodio';
 import { IEpisodiosFilter } from '../model/EpisodiosFilter';
 import { IResultPagination } from "../model/ResultPagination";
 
@@ -13,7 +14,7 @@ export class EpisodiosService {
   private readonly baseUrl: string = environment.BFFUrl;
 
   // Utilizamos un Signal para almacenar los episodios
-  private _episodiosPaginated: WritableSignal<IResultPagination | null> = signal(null);
+  private _episodiosPaginated: WritableSignal<IResultPagination<IEpisodio> | null> = signal(null);
 
   // Exponemos el estado como un Signal de solo lectura
   public readonly episodiosPaginated = this._episodiosPaginated.asReadonly();
@@ -30,11 +31,11 @@ export class EpisodiosService {
     // Construye los query parameters
     let queryParams = new HttpParams();
     if (filter.PageIndex && filter.PageIndex > 1)
-      queryParams.set('PageIndex', filter.PageIndex);
+      queryParams = queryParams.set('PageIndex', filter.PageIndex);
     if (filter.Id)
-      queryParams.set('Id', filter.Id);
+      queryParams = queryParams.set('Id', filter.Id);
 
-    this.http.get<IResultPagination>(`${this.baseUrl}episodios/`, { params: queryParams })
+    this.http.get<IResultPagination<IEpisodio>>(`${this.baseUrl}episodios/`, { params: queryParams })
       .pipe(
         // El operador finalize se ejecuta cuando el Observable termina (éxito o error)
         finalize(() => this.isLoading.set(false))
