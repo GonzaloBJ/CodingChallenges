@@ -1,90 +1,102 @@
-<p>episodios works!</p>
-<!-- @if (episodiosService.isLoading()) {
-  <p>Cargando cesta...</p>
-} @else if (episodiosService.episodiosPaginated()) {
-  <h2>Mi Cesta</h2>
-  <p>ID: {{ episodiosService.episodiosPaginated()?.data }}</p>
-  <p>Total de productos: {{ episodiosService.episodiosPaginated()!.count}}</p>
-} @else {
-  <p>La cesta está vacía.</p>
-}
-<button (click)="cargarEpisodios({})">Cargar Cesta</button> -->
-
 <div class="container">
-  <div class="table-section">
-      <h2>Lista de Episodios</h2>
-
-      <table class="data-table">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Emitido En</th>
-                  <th>Temp/Episodio</th>
-                  <th>Acción</th>
-              </tr>
-          </thead>
-          <tbody>
-            @for (episodio of episodiosService.episodiosPaginated()?.data; track episodio.id) {
-              <tr [class.selected]="episodio === selectedEpisodio">
-                  <td>{{ episodio.id }}</td>
-                  <td>{{ episodio.nombre }}</td>
-                  <td>{{ episodio.emitidoEn }}</td>
-                  <td>{{ episodio.temporadaConNumeroEpisodio }}</td>
-                  <td>
-                      <button class="select-btn" (click)="selectEpisodio(episodio)">
-                          {{ episodio === selectedEpisodio ? 'Deseleccionar' : 'Ver Detalle' }}
-                      </button>
-                  </td>
-              </tr>
-            }
-          </tbody>
-      </table>
-
-      <div class="paginator">
-          <button
-              (click)="goToPage(currentPage - 1)"
-              [disabled]="currentPage === 1"
-          >
-              &laquo; Anterior
-          </button>
-
-          <button
-              *ngFor="let page of pageNumbers"
-              (click)="goToPage(page)"
-              [class.active]="page === currentPage"
-          >
-              {{ page }}
-          </button>
-
-          <button
-              (click)="goToPage(currentPage + 1)"
-              [disabled]="currentPage === totalPages"
-          >
-              Siguiente &raquo;
-          </button>
-          <span class="info">Página {{ currentPage }} de {{ totalPages }}</span>
+  <div class="Filter-section">
+    <h2>Filtrar Episodios</h2>
+    <form [formGroup]="filterForm" class="filter-form">
+      <div class="form-group">
+        <label for="idFilter">Id:</label>
+        <input
+          type="text"
+          id="idFilter"
+          name="idFilter"
+          placeholder="Id del episodio"
+          formControlName="idFilter"
+          class="form-control"
+        />
       </div>
+      <button type="submit" class="apply-btn">Aplicar Filtro</button>
+    </form>
+  </div>
+  <div class="table-section">
+    <h2>Lista de Episodios</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Emitido En</th>
+          <th>Temp/Episodio</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- @for (episodio of episodiosService.episodiosPaginated()?.data; track -->
+        @for (episodio of this.episodiosService.episodiosPaginated()?.data!; track
+        episodio.id) {
+        <tr [class.selected]="episodio === selectedEpisodio">
+          <td>{{ episodio.id }}</td>
+          <td>{{ episodio.nombre }}</td>
+          <td>{{ episodio.emitidoEn }}</td>
+          <td>{{ episodio.temporadaConNumeroEpisodio }}</td>
+          <td>
+            <button class="select-btn" (click)="selectEpisodio(episodio)">
+              {{
+                episodio === selectedEpisodio ? 'Deseleccionar' : 'Ver Detalle'
+              }}
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="paginator">
+      <button
+        (click)="goToPage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        &laquo; Anterior
+      </button>
+
+      <button
+        *ngFor="let page of pageNumbers"
+        (click)="goToPage(page)"
+        [class.active]="page === currentPage"
+      >
+        {{ page }}
+      </button>
+
+      <button
+        (click)="goToPage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        Siguiente &raquo;
+      </button>
+      <span class="info">Página {{ currentPage }} de {{ totalPages }}</span>
+    </div>
   </div>
 
   <div class="card-section">
-      <h2>Detalle</h2>
+    <h2>Detalle</h2>
 
-      <div class="card" *ngIf="selectedEpisodio; else noSelection">
-          <div class="card-header">
-              <h3>{{ selectedEpisodio.nombre }}</h3>
-              <span class="subtitle">ID: {{ selectedEpisodio.id }}</span>
-          </div>
-          <div class="card-body">
-              <p><strong>📺 Emitido en:</strong> {{ selectedEpisodio.emitidoEn }}</p>
-              <p><strong># Temporada/Episodio:</strong> {{ selectedEpisodio.temporadaConNumeroEpisodio }}</p>
-          </div>
+    <div class="card" *ngIf="selectedEpisodio; else noSelection">
+      <div class="card-header">
+        <h3>{{ selectedEpisodio.nombre }}</h3>
+        <span class="subtitle">ID: {{ selectedEpisodio.id }}</span>
       </div>
+      <div class="card-body">
+        <p><strong>📺 Emitido en:</strong> {{ selectedEpisodio.emitidoEn }}</p>
+        <p>
+          <strong># Temporada/Episodio:</strong>
+          {{ selectedEpisodio.temporadaConNumeroEpisodio }}
+        </p>
+      </div>
+    </div>
 
-      <ng-template #noSelection>
-          <div class="card placeholder">
-              Selecciona una fila de la tabla para ver sus detalles.
-          </div>
-      </ng-template>
+    <ng-template #noSelection>
+      <div class="card placeholder">
+        Selecciona una fila de la tabla para ver sus detalles.
+      </div>
+    </ng-template>
   </div>
 </div>

@@ -1,31 +1,26 @@
 
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Necesario para ngIf, ngFor
+import { Component, effect, inject, Injector, OnInit, } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { EpisodiosService } from './episodios.service';
-import { IEpisodiosFilter } from '../model/EpisodiosFilter';
 import { IEpisodio } from '../model/Episodio';
-
-// Interfaz para la estructura de datos
-interface ItemTabla {
-  id: number;
-  nombre: string;
-  emitidoEn: string;
-  temporadaConNumeroEpisodio: string;
-}
+import { ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-episodios',
   standalone: true,
-  imports: [CommonModule], // Importamos CommonModule
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './episodios.component.html',
   styleUrl: './episodios.component.css'
 })
 export class EpisodiosComponent implements OnInit {
+  private readonly injector = inject(Injector);
   // Fuente de datos completa
   public episodiosService = inject(EpisodiosService);
 
-  // Datos mostrados en la página actual
-  public paginatedData: IEpisodio[] = [];
+  // constructor de formularios reactivos
+  private formBuilder = inject(FormBuilder);
 
   // Control de la paginación
   public pageSize: number = 20;
@@ -36,10 +31,31 @@ export class EpisodiosComponent implements OnInit {
   // --- Selección de Ítem ---
   public selectedEpisodio: IEpisodio | null = null;
 
+  // Formulario de filtros reactivo
+  filterForm = this.formBuilder.group({
+    idFilter: new FormControl<string>('', { nonNullable: true }),
+  });
+
+  private idFilter$ = toSignal(this.filterForm.controls.idFilter.valueChanges.pipe(
+    startWith(this.filterForm.controls.idFilter.value), // Emite el valor inicial
+    debounceTime(300), // Espera 300ms después de que el usuario deja de escribir
+    distinctUntilChanged() // Solo emite si el valor realmente cambió
+  ), {initialValue: ''});
+
+  constructor() {
+    effect(() => {
+      console.log("EFFECT DEL IDFILTER A EPISODIOFILTER");
+      const idFilter = this.idFilter$() != '' ? Number(this.idFilter$()): null;
+
+      this.episodiosService.episodiosFilter.set(idFilter ? {Id: idFilter} : {});
+    }, {
+      allowSignalWrites: true,
+      injector: this.injector
+    });
+  }
+
   ngOnInit() {
-    // if (!this.episodiosService.isLoading())
-    //   this.cargarEpisodios({});
-    this.updatePagination();
+    //this.updatePagination();
 
     if (!this.episodiosService.isLoading() && this.episodiosService.episodiosPaginated()?.count! > 0 ) {
       this.totalItems = this.episodiosService.episodiosPaginated()?.count!;
@@ -47,16 +63,21 @@ export class EpisodiosComponent implements OnInit {
     }
   }
 
-  cargarEpisodios(filter: IEpisodiosFilter): void {
-    this.episodiosService.getEpisodios(filter);
+  /**
+   * Establece el episodio seleccionado para mostrarlo en la card de detalle.
+   * @param episodio El episodio de la tabla seleccionado.
+   */
+  selectEpisodio(episodio: IEpisodio): void {
+    // Si se hace clic en el mismo ítem, se deselecciona.
+    this.selectedEpisodio = this.selectedEpisodio === episodio ? null : episodio;
   }
 
   /**
    * Actualiza el subconjunto de datos a mostrar según la página actual.
    */
   updatePagination(): void {
-    this.episodiosService.getEpisodios({PageIndex: this.currentPage});
-    this.paginatedData = this.episodiosService.episodiosPaginated()?.data as IEpisodio[];
+    console.log("UPDATE PAGINATION A PAGINA " );
+    this.episodiosService.episodiosFilter.set({PageIndex: this.currentPage});
     this.selectedEpisodio = null; // Limpiar selección al cambiar de página
   }
 
@@ -72,18 +93,9 @@ export class EpisodiosComponent implements OnInit {
   }
 
   /**
-   * Establece el ítem seleccionado para mostrarlo en la card de detalle.
-   * @param item El ítem de la tabla seleccionado.
-   */
-  selectEpisodio(episodio: IEpisodio): void {
-    // Si se hace clic en el mismo ítem, se deselecciona.
-    this.selectedEpisodio = this.selectedEpisodio === episodio ? null : episodio;
-  }
-
-  /**
    * Genera un array de números de página para mostrar en el paginador.
    */
   get pageNumbers(): number[] {
-    return Array(this.totalPages).fill(0).map((x, i) => i + 1);
+    return Array(this.totalPages).fill(0).map(i => i + 1);
   }
 }
