@@ -143,6 +143,40 @@ h2 {
   color: #666;
 }
 
+.form-control {
+  /* Fondo y borde */
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Esquinas redondeadas */
+
+  /* Espaciado */
+  padding: 8px 12px;
+  margin-top: 5px;
+
+  /* Tipografía */
+  font-size: 16px;
+  color: #333;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho */
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Color primario al enfocar */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra suave para destacar */
+  outline: none; /* Quita el contorno por defecto del navegador */
+  background-color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block; /* Para que la etiqueta ocupe su propia línea */
+  margin-bottom: 5px;
+}
+
 /* Media Query para responsividad (diseño de una sola columna en móviles) */
 @media (max-width: 900px) {
   .container {

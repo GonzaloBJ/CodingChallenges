@@ -6,6 +6,6 @@ namespace BFF.web.Interfaces
 {
     public interface IEpisodiosService
     {
-        public Task<ResultPagination<EpisodioDto>> EpisodiosAsync(EpisodiosFilter filter);
+        public Task<ServiceResult<ResultPagination<EpisodioDto>>> EpisodiosAsync(EpisodiosFilter filter);
     }
 }

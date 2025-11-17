@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal, Injector, effect } from "@angular/core";
 import { finalize } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -36,7 +36,7 @@ export class EpisodiosService {
     if (filter && filter.Id)
       queryParams = queryParams.set('Id', filter.Id!);
 
-    this.http.get<IResultPagination<IEpisodio>>(`${this.baseUrl}episodios/`, { params: queryParams })
+    this.http.get<IResultPagination<IEpisodio> | string>(`${this.baseUrl}episodios/`, { params: queryParams })
       .pipe(
         // El operador finalize se ejecuta cuando el Observable termina (éxito o error)
         finalize(() => this.isLoading.set(false))
@@ -44,18 +44,18 @@ export class EpisodiosService {
       .subscribe({
         next: (episodios) => {
           // Actualizar el Signal con el nuevo valor
-          this._episodiosPaginated.set(episodios);
+          this._episodiosPaginated.set(episodios as IResultPagination<IEpisodio>);
         },
-        error: (err) => {
-          console.error('Error al obtener los episodios:', err);
+        error: (_err) => {
           this._episodiosPaginated.set(null); // Limpiar la cesta en caso de error
+          this.isLoading.set(false);
+          return;
         }
       });
   }
 
   constructor() {
     effect(() => {
-      console.log("EFFECT DEL EPISODIOFILTER A EPISODIOS");
       const newfilter = this.episodiosFilter();
       this.getEpisodios(newfilter);
     }, {

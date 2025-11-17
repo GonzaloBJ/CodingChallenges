@@ -1,8 +1,7 @@
-﻿using BFF.web.Dtos;
-using BFF.web.Filters;
-using BFF.web.Helpers;
+﻿using BFF.web.Filters;
 using BFF.web.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace BFF.web.Controllers
 {
@@ -19,11 +18,19 @@ namespace BFF.web.Controllers
 
 
         [HttpGet(Name = "episodios")]
-        public async Task<ResultPagination<EpisodioDto>> GetAsync([FromQuery] EpisodiosFilter filter)
+        public async Task<IActionResult> GetAsync([FromQuery] EpisodiosFilter filter)
         {
-            ResultPagination<EpisodioDto> episodios = await _episodiosService.EpisodiosAsync(filter);
+            var result = await _episodiosService.EpisodiosAsync(filter);
 
-            return episodios;
+            if (!result.Success)
+            {
+                if (result.Code == (int)HttpStatusCode.NotFound)
+                    return NotFound(result.ErrorMessage);
+
+                return StatusCode(500, result.ErrorMessage);
+            }
+
+            return Ok(result.Data);
         }
     }
 }

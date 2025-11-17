@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\services\\episodiosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:services\\episodiosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\filters\\episodiosfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:filters\\episodiosfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\helpers\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:helpers\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\services\\episodiosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:services\\episodiosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\helpers\\transformations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:helpers\\transformations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\filters\\episodiosfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:filters\\episodiosfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:controllers\\episodioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|c:\\users\\usuario\\sandbox\\codingchallenges\\pruebatecnicacarsales\\bff.web\\helpers\\transformations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B50BFB0-0DA0-43F9-9B4A-EF26C32A34CE}|BFF.web.csproj|solutionrelative:helpers\\transformations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "ServiceResult.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Helpers\\ServiceResult.cs",
+              "RelativeDocumentMoniker": "Helpers\\ServiceResult.cs",
+              "ToolTip": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Helpers\\ServiceResult.cs",
+              "RelativeToolTip": "Helpers\\ServiceResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T18:41:24.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -42,11 +59,12 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAADwvyEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T17:54:10.112Z"
+              "WhenOpened": "2025-11-12T17:54:10.112Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "EpisodiosFilter.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Filters\\EpisodiosFilter.cs",
               "RelativeDocumentMoniker": "Filters\\EpisodiosFilter.cs",
@@ -54,12 +72,11 @@
               "RelativeToolTip": "Filters\\EpisodiosFilter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T13:56:06.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T13:56:06.432Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Transformations.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Helpers\\Transformations.cs",
               "RelativeDocumentMoniker": "Helpers\\Transformations.cs",
@@ -71,28 +88,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "EpisodiosService.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Services\\EpisodiosService.cs",
               "RelativeDocumentMoniker": "Services\\EpisodiosService.cs",
               "ToolTip": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Services\\EpisodiosService.cs",
               "RelativeToolTip": "Services\\EpisodiosService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABfAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowBYAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T13:26:29.161Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "EpisodiosController.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Controllers\\EpisodiosController.cs",
               "RelativeDocumentMoniker": "Controllers\\EpisodiosController.cs",
               "ToolTip": "C:\\Users\\usuario\\sandbox\\CodingChallenges\\PruebaTecnicaCarsales\\BFF.web\\Controllers\\EpisodiosController.cs",
               "RelativeToolTip": "Controllers\\EpisodiosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T19:44:45.461Z"
+              "WhenOpened": "2025-11-10T19:44:45.461Z",
+              "EditorCaption": ""
             }
           ]
         }

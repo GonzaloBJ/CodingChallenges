@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BFF.web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56b55ac66ba39953292422a217bb8be780072165")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd523f50fdc18f140dfb0cb1b617bb03f7cc9776")]
 [assembly: System.Reflection.AssemblyProductAttribute("BFF.web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BFF.web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

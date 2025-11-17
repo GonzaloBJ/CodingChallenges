@@ -1,5 +1,5 @@
 
-import { Component, effect, inject, Injector, OnInit, } from '@angular/core';
+import { Component, computed, effect, inject, Injector, OnInit, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EpisodiosService } from './episodios.service';
 import { IEpisodio } from '../model/Episodio';
@@ -25,8 +25,10 @@ export class EpisodiosComponent implements OnInit {
   // Control de la paginación
   public pageSize: number = 20;
   public currentPage: number = 1;
-  public totalItems: number = 0;
-  public totalPages: number = 0;
+  public totalIems = computed(() => this.episodiosService.episodiosPaginated()?.count ?? 0);
+  public totalPages = computed(() =>
+    Math.ceil((this.episodiosService.episodiosPaginated()?.count ?? 0) / this.pageSize)
+  );
 
   // --- Selección de Ítem ---
   public selectedEpisodio: IEpisodio | null = null;
@@ -43,8 +45,8 @@ export class EpisodiosComponent implements OnInit {
   ), {initialValue: ''});
 
   constructor() {
+    // Efecto para actualizar el filtro de episodios cuando cambia el idFilter
     effect(() => {
-      console.log("EFFECT DEL IDFILTER A EPISODIOFILTER");
       const idFilter = this.idFilter$() != '' ? Number(this.idFilter$()): null;
 
       this.episodiosService.episodiosFilter.set(idFilter ? {Id: idFilter} : {});
@@ -54,14 +56,7 @@ export class EpisodiosComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    //this.updatePagination();
-
-    if (!this.episodiosService.isLoading() && this.episodiosService.episodiosPaginated()?.count! > 0 ) {
-      this.totalItems = this.episodiosService.episodiosPaginated()?.count!;
-      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-    }
-  }
+  ngOnInit() { }
 
   /**
    * Establece el episodio seleccionado para mostrarlo en la card de detalle.
@@ -76,7 +71,6 @@ export class EpisodiosComponent implements OnInit {
    * Actualiza el subconjunto de datos a mostrar según la página actual.
    */
   updatePagination(): void {
-    console.log("UPDATE PAGINATION A PAGINA " );
     this.episodiosService.episodiosFilter.set({PageIndex: this.currentPage});
     this.selectedEpisodio = null; // Limpiar selección al cambiar de página
   }
@@ -86,7 +80,7 @@ export class EpisodiosComponent implements OnInit {
    * @param newPage El número de la página a la que se desea ir.
    */
   goToPage(newPage: number): void {
-    if (newPage >= 1 && newPage <= this.totalPages) {
+    if (newPage >= 1 && newPage <= this.totalPages()) {
       this.currentPage = newPage;
       this.updatePagination();
     }
@@ -96,6 +90,6 @@ export class EpisodiosComponent implements OnInit {
    * Genera un array de números de página para mostrar en el paginador.
    */
   get pageNumbers(): number[] {
-    return Array(this.totalPages).fill(0).map(i => i + 1);
+    return Array(this.totalPages()).fill(0).map((_x, i) => i + 1);
   }
 }
